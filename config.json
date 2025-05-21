@@ -1,0 +1,13 @@
+{
+    "min_lon": -179.95,
+    "max_lon": 179.95,
+    "min_lat": -89.95,
+    "max_lat": 89.95,
+    "grid_size": 0.1,
+    "cmap": "jet",
+    "start_date": "2024222",
+    "end_date": "2024366",
+    "satellite": "SNPP",
+    "num_cores": 16,
+    "data_export_path": "/home/ubuntu/EXPORTED_FILES/DAILY_SNPP_VIIRS"
+}
