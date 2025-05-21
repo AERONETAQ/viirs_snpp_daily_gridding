@@ -1,0 +1,8 @@
+__pycache__
+*png
+*.nc
+*.ipynb_checkpoints
+*.ipynb
+.env
+*.log
+exported_log_files
