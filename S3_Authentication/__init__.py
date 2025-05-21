@@ -1,0 +1,1 @@
+from .authentication import get_earthdata_credentials
