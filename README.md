@@ -8,12 +8,12 @@
 
 ## Features
 
-- Batch processing of VIIRS SNPP Level 2 data
+- Batch processing of daily VIIRS SNPP Level 2 data directly from S3 (no download necessary)
 - Flexible spatial gridding (user-defined resolution and extent)
 - Output in NetCDF format
 - Multiprocessing for fast batch processing
 - Modern logging (console, multiprocessing-aware)
-- Clean, parameter-driven API (no config files required)
+- Clean, parameter-driven API 
 - Usable as both a Python library and CLI tool
 
 ## Installation
@@ -119,7 +119,3 @@ viirs_snpp_daily_gridding/
 ## Contributing
 
 Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
-
-## License
-
-This project is licensed under the terms of the NASA Open Source Agreement.
