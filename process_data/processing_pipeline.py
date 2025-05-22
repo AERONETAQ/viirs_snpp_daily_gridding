@@ -11,7 +11,6 @@ def process_data(
     grid_size: float,
     year: str,
     day: str,
-    satellite: str,
     data_export_path: str,
     min_lon: float,
     max_lon: float,
@@ -26,7 +25,6 @@ def process_data(
         grid_size (float): The size of the grid cells for gridding the data.
         year (str): The year of the data to process (e.g., "2023").
         day (str): The day of the year of the data to process (e.g., "001" for January 1st).
-        satellite (str): The satellite name (e.g., "NOAA20").
         data_export_path (str): The path where the processed data will be exported.
         min_lon (float): The minimum longitude for the region of interest.
         max_lon (float): The maximum longitude for the region of interest.
@@ -43,8 +41,8 @@ def process_data(
         logger.set_date(current_processing_date) # setting date for logging files for each process
         logger.info(f"===== Current CHILD WORKER PID is {os.getpid()}, processing data for day {year+day} or {current_processing_date}, processing date is {datetime.now()} =====")
 
-        files_AERDB = get_file_list_dynamically(year, day, f"AERDB_L2_VIIRS_{satellite}")
-        files_AERDT = get_file_list_dynamically(year, day, f"AERDT_L2_VIIRS_{satellite}")
+        files_AERDB = get_file_list_dynamically(year, day, f"AERDB_L2_VIIRS_SNPP")
+        files_AERDT = get_file_list_dynamically(year, day, f"AERDT_L2_VIIRS_SNPP")
 
         if not files_AERDB:
             raise FileNotFoundError("No valid AERDB files found for the specified date range. Please verify the folder path and date range in the configuration.")
@@ -52,7 +50,7 @@ def process_data(
             raise FileNotFoundError("No valid AERDT files found for the specified date range.")
 
         # processing Aerosol-DeepBlue data
-        aod_db, lat_db, lon_db, vza_db = process_files(files_AERDB, satellite, "AERDB", -0.05, 5.0, creds)
+        aod_db, lat_db, lon_db, vza_db = process_files(files_AERDB, "SNPP", "AERDB", -0.05, 5.0, creds)
 
         # Grid the AERDB data
         avgtau_db, stdtau_db, grdlat, grdlon, _, _, count_db, _ = grid(

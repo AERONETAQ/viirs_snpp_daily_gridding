@@ -39,7 +39,6 @@ def main():
     grid_size = config["grid_size"]
     start_date = config["start_date"]
     end_date = config["end_date"]
-    satellite = config["satellite"]
     data_export_path = config["data_export_path"]
     min_lon = config["min_lon"]
     max_lon = config["max_lon"]
@@ -61,7 +60,7 @@ def main():
 
     logger.set_date_range(start_date, end_date)
     logger.info(f"===== Current MAIN WORKER PID is {os.getpid()}, Main process started at: {datetime.now()}  =====")
-    logger.info(f"Processing data from {start_date} to {end_date} for satellite {satellite}")
+    logger.info(f"Processing data from {start_date} to {end_date} for VIIRS-SNPP")
     logger.info(f"Grid size: {grid_size}")
     logger.info(f"Data export path: {data_export_path}")
     logger.info(f"Longitude range: {min_lon} to {max_lon}")
@@ -76,7 +75,7 @@ def main():
     logger.info("Earthdata credentials retrieved successfully.")
 
     results = Parallel(n_jobs=num_cores)(
-        delayed(process_data)(grid_size, year, day, satellite, data_export_path, min_lon, max_lon, min_lat, max_lat, creds)
+        delayed(process_data)(grid_size, year, day, data_export_path, min_lon, max_lon, min_lat, max_lat, creds)
         for year, day in year_day_list
     )
 
