@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
+version = "1.0.0"
 name = "viirs_snpp_daily_gridding"
-version = "0.1.0"
-description = "VIIRS SNPP daily gridding tools"
+description = "A production-ready Python package for gridding and processing NASA SNPP VIIRS daily satellite data, with support for S3 and local workflows."
 authors = [
     { name = "Pawan Gupta", email = "pawan.gupta@nasa.gov" }
 ]
