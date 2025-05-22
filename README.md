@@ -4,7 +4,7 @@
 
 ## Overview
 
-`viirs_snpp_daily_gridding` is a modern, production-ready Python package for processing and gridding daily VIIRS SNPP satellite data. It automates the workflow from raw data ingestion to spatially gridded NetCDF outputs, supporting atmospheric and environmental research. The package is designed for both programmatic (library) and command-line (CLI) use, with robust logging, multiprocessing, and clear error handling.
+`viirs_snpp_daily_gridding` is a production-ready Python package for processing and gridding daily VIIRS SNPP level 2 satellite data. It automates the workflow from raw data ingestion to spatially gridded NetCDF outputs (Level 3), supporting atmospheric and environmental research. The package is designed for both programmatic (library) and command-line (CLI) use, with robust logging, multiprocessing, and clear error handling.
 
 ## Features
 
