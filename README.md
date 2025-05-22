@@ -95,9 +95,36 @@ python -m viirs_snpp_daily_gridding.run_gridding \
 - All arguments are optional and have defaults, but you must provide valid Earthdata credentials for real data access.
 - You can still edit the script directly if you prefer.
 
+## Important Note on Data Access (NASA S3 Restrictions)
+
+NASA's SNPP VIIRS daily data from the Earthdata/LAADS DAAC S3 bucket is only accessible from AWS services (such as EC2) that are located in the AWS us-west-2 region. If you are not running this package on an AWS instance in us-west-2, you will not be able to access the S3 bucket directly.
+
+**If you want to process data manually on your local machine:**
+
+1. **Download the required VIIRS SNPP files to your computer** using NASA GES DISC or the WGET tool. You can find and download the data from:
+   - [NASA GES DISC](https://disc.gsfc.nasa.gov/)
+   - [LAADS DAAC](https://ladsweb.modaps.eosdis.nasa.gov/)
+   - Use WGET scripts provided by NASA to automate downloads.
+
+2. **Update the code to read from local NetCDF files instead of S3.**
+   - In the code (specifically in the data reading section using xarray), change the file path from the S3 bucket to your local file path.
+   - For example, replace:
+     ```python
+     ds = xr.open_mfdataset(s3_fs.open(s3_path), decode_timedelta=True)
+     ```
+     with:
+     ```python
+     ds = xr.open_mfdataset(local_file_path, decode_timedelta=True)
+     ```
+   - Make sure your local file paths and directory structure match your download location.
+
+3. **Proceed with the rest of the workflow as normal.**
+
+If you are running on AWS EC2 in us-west-2, no changes are needed and S3 access will work as designed.
+
 ## Credentials
 
-Earthdata credentials are required for data access. Pass them as arguments to the relevant functions, or set them as environment variables (see `.env` for an example). Do **not** hardcode credentials in your scripts.
+Earthdata credentials are required for data access. Pass them as arguments to the relevant functions.
 
 ## Logging
 
