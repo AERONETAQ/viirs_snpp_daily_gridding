@@ -1,41 +1,40 @@
 import time
 import json
 import os
+import yaml
 from joblib import Parallel, delayed
 from datetime import datetime, timedelta
-from logs import logger
-from S3_Authentication.authentication import get_earthdata_credentials
-from process_data import process_data
+from viirs_snpp_daily_gridding import get_earthdata_credentials, process_data, logger
 
 def load_config(config_path: str) -> dict:
     """
-    Load configuration from a JSON file.
+    Load configuration from a YAML file.
 
     Args:
-        config_path (str): Path to the configuration JSON file.
+        config_path (str): Path to the configuration YAML file.
 
     Returns:
         dict: Configuration parameters.
 
     Raises:
         FileNotFoundError: If the configuration file is not found.
-        ValueError: If there is an error decoding the JSON file.
+        ValueError: If there is an error decoding the YAML file.
     """
     try:
         with open(config_path, "r") as file:
-            config = json.load(file)
+            config = yaml.safe_load(file)
         return config
     except FileNotFoundError as e:
         logger.error(f"An error occurred: {e}")
         raise FileNotFoundError(f"Configuration file '{config_path}' not found. Please ensure it exists in the current directory.")
-    except json.JSONDecodeError as e:
+    except yaml.YAMLError as e:
         logger.error(f"An error occurred: {e}")
-        raise ValueError(f"Error decoding '{config_path}'. Ensure the file contains valid JSON.")
+        raise ValueError(f"Error decoding '{config_path}'. Ensure the file contains valid YAML.")
 
 
 def main():
     os.environ['MAIN_PID'] = str(os.getpid())
-    config = load_config("config.json")
+    config = load_config("config.yaml")
     grid_size = config["grid_size"]
     start_date = config["start_date"]
     end_date = config["end_date"]

@@ -14,25 +14,38 @@
 
 ## Installation
 
-Clone the repository and install dependencies:
+Clone the repository and install dependencies (recommended: use a virtual environment):
+
+### Using venv (standard Python virtual environment)
 
 ```bash
-git clone https://github.com/yourusername/viirs_snpp_daily_gridding.git
-cd viirs_snpp_daily_gridding
-pip install -r requirements.txt
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+# source venv/bin/activate
+pip install .
 ```
 
-## Usage
+### Using conda
 
-
-
-## Folder Structure
-
-```
-viirs_snpp_daily_gridding/
-
+```bash
+conda create -n viirs_env python=3.9
+conda activate viirs_env
+pip install .
 ```
 
 ## Configuration
 
-Edit `config.json` to customize gridding parameters, input/output paths, and quality filters.
+Edit `config.yaml` to customize gridding parameters, input/output paths, and quality filters.
+
+## Usage
+
+1. Edit `config.yaml` to set your parameters (gridding, input/output paths, etc).
+2. Run the main script:
+
+```bash
+python main.py
+```
+
+This will process and grid the VIIRS SNPP data as specified in your configuration.

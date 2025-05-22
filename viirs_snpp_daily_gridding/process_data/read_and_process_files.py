@@ -7,7 +7,6 @@ import xarray as xr
 import numpy as np
 from tqdm import tqdm
 from logs import logger
-from S3_Authentication import get_earthdata_credentials
 
 def process_files(
     files: list[str],

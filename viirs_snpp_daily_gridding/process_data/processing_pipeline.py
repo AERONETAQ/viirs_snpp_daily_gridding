@@ -3,7 +3,9 @@ import time
 import numpy as np
 from datetime import datetime
 from logs import logger 
-from process_data import grid, db_dt_processing, process_files, plot_map
+from .grid import grid
+from .combine_db_dt import db_dt_processing
+from .read_and_process_files import process_files
 from export_data import export_netcdf
 from web_scraping import get_file_list_dynamically
 

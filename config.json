@@ -5,8 +5,8 @@
     "max_lat": 89.95,
     "grid_size": 0.1,
     "cmap": "jet",
-    "start_date": "2024222",
-    "end_date": "2024366",
-    "num_cores": 16,
-    "data_export_path": "/home/ubuntu/EXPORTED_FILES/DAILY_SNPP_VIIRS"
+    "start_date": "2024001",
+    "end_date": "2024001",
+    "num_cores": 2,
+    "data_export_path": "."
 }
