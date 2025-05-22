@@ -2,7 +2,7 @@ import os
 import numpy as np
 import xarray as xr
 import dask.array as da
-from logs import logger
+from viirs_snpp_daily_gridding.logs import logger
 from datetime import datetime, timezone
 
 def get_file_export_name(file_date: int, current_time: datetime) -> str:

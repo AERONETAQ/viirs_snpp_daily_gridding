@@ -2,12 +2,12 @@ import os
 import time
 import numpy as np
 from datetime import datetime
-from logs import logger 
+from viirs_snpp_daily_gridding.logs import logger 
+from viirs_snpp_daily_gridding.export_data import export_netcdf
+from viirs_snpp_daily_gridding.web_scraping import get_file_list_dynamically
 from .grid import grid
 from .combine_db_dt import db_dt_processing
 from .read_and_process_files import process_files
-from export_data import export_netcdf
-from web_scraping import get_file_list_dynamically
 
 def process_data(
     grid_size: float,
@@ -69,7 +69,7 @@ def process_data(
         logger.info(f"Gridding AERDB data for {year+day} completed.")
 
         # processing Aerosol-DarkTarget data
-        aod_dt, lat_dt, lon_dt, vza_dt = process_files(files_AERDT, satellite, "AERDT", -0.05, 5.0, creds)
+        aod_dt, lat_dt, lon_dt, vza_dt = process_files(files_AERDT, "SNPP", "AERDT", -0.05, 5.0, creds)
 
         # Grid the AERDT data
         avgtau_dt, stdtau_dt, _, _, _, _, count_dt, sensorZenithAngle_dt = grid(

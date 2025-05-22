@@ -6,7 +6,7 @@ from typing import Tuple
 import xarray as xr
 import numpy as np
 from tqdm import tqdm
-from logs import logger
+from viirs_snpp_daily_gridding.logs import logger
 
 def process_files(
     files: list[str],
