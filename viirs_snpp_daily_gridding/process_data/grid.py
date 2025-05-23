@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 from typing import Tuple
 
 def grid(
@@ -53,7 +52,7 @@ def grid(
 	grdlat=np.full([xdim,ydim], -999.0, dtype=np.float32)
 	grdlon=np.full([xdim,ydim], -999.0, dtype=np.float32)
 	
-	for ii in tqdm(range(len(indata)), desc="Gridding data"):
+	for ii in range(len(indata)):
 		if (inlat[ii]>=minlat and inlat[ii] <= maxlat and inlon[ii]>= minlon and inlon[ii] <= maxlon):
 			i=int((inlon[ii]-minlon)/dx)
 			j=int((inlat[ii]-minlat)/dy)
@@ -67,7 +66,7 @@ def grid(
 			if indata[ii] > maxtau[i,j]:
 				maxtau[i,j]=indata[ii]
 				
-	for i in tqdm(range(xdim), desc="Calculating averages"):
+	for i in range(xdim):
 		for j in range(ydim):
 			grdlon[i,j]=dx*i+minlon
 			grdlat[i,j]=dx*j+minlat

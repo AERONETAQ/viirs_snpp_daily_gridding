@@ -54,7 +54,7 @@ def read_data_from_files(file_paths: list[str], file_type: str, satellite: str, 
     lon_list = []
     vza_list = []
 
-    for file_path in tqdm(file_paths, desc=f"Processing {file_type} Files"):
+    for file_path in file_paths:
         try:
             if file_type == 'AERDB':
                 s3_path = f"s3://prod-lads/AERDB_L2_VIIRS_{satellite}/{file_path}"
