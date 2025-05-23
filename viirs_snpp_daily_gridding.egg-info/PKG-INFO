@@ -1,3 +1,27 @@
+Metadata-Version: 2.4
+Name: viirs_snpp_daily_gridding
+Version: 1.0.0
+Summary: A production-ready Python package for gridding and processing NASA SNPP VIIRS daily satellite data, with support for S3 and local workflows.
+Author-email: Pawan Gupta <pawan.gupta@nasa.gov>
+Project-URL: Homepage, https://github.com/AERONETAQ/viirs_snpp_daily_gridding
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: netcdf4==1.7.2
+Requires-Dist: cartopy==0.24.1
+Requires-Dist: xarray==2025.1.2
+Requires-Dist: numpy==2.2.2
+Requires-Dist: matplotlib==3.10.0
+Requires-Dist: tqdm==4.67.1
+Requires-Dist: pandas==2.2.3
+Requires-Dist: dask==2025.1.0
+Requires-Dist: h5netcdf==1.5.0
+Requires-Dist: boto3
+Requires-Dist: s3fs
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: beautifulsoup4==4.13.3
+Requires-Dist: joblib==1.4.2
+Requires-Dist: earthaccess==0.14.0
+
 # viirs_snpp_daily_gridding
 
 ![VIIRS SNPP Daily Gridding](images/image.png)

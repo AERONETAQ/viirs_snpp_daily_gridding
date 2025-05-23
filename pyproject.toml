@@ -10,7 +10,7 @@ authors = [
     { name = "Pawan Gupta", email = "pawan.gupta@nasa.gov" }
 ]
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.11"
 dependencies = [
     "netcdf4==1.7.2",
     "cartopy==0.24.1",
@@ -28,6 +28,9 @@ dependencies = [
     "joblib==1.4.2",
     "earthaccess==0.14.0"
 ]
+
+[tool.setuptools]
+packages = ["viirs_snpp_daily_gridding"]
 
 [project.urls]
 Homepage = "https://github.com/AERONETAQ/viirs_snpp_daily_gridding"

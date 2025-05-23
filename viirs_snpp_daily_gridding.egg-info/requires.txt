@@ -1,0 +1,15 @@
+netcdf4==1.7.2
+cartopy==0.24.1
+xarray==2025.1.2
+numpy==2.2.2
+matplotlib==3.10.0
+tqdm==4.67.1
+pandas==2.2.3
+dask==2025.1.0
+h5netcdf==1.5.0
+boto3
+s3fs
+python-dotenv==1.0.1
+beautifulsoup4==4.13.3
+joblib==1.4.2
+earthaccess==0.14.0
