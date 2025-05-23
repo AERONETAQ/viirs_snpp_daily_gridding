@@ -1,9 +1,0 @@
-README.md
-pyproject.toml
-viirs_snpp_daily_gridding/__init__.py
-viirs_snpp_daily_gridding/run_gridding.py
-viirs_snpp_daily_gridding.egg-info/PKG-INFO
-viirs_snpp_daily_gridding.egg-info/SOURCES.txt
-viirs_snpp_daily_gridding.egg-info/dependency_links.txt
-viirs_snpp_daily_gridding.egg-info/requires.txt
-viirs_snpp_daily_gridding.egg-info/top_level.txt
