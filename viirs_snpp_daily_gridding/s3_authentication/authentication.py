@@ -26,7 +26,10 @@ def get_earthdata_credentials(username, password):
         logger.error("Earthdata username or password not provided.")
         raise ValueError("Missing Earthdata credentials")
     try:
-        earthaccess.login(strategy="netrc", username=username, password=password)
+        # if you already have these set up in your environment, you can comment out the next two lines
+        os.environ["EARTHDATA_USERNAME"] = username
+        os.environ["EARTHDATA_PASSWORD"] = password 
+        earthaccess.login(strategy="netrc")
         creds = earthaccess.get_s3_credentials(daac="LAADS")
         return creds
     except requests.RequestException as e:
