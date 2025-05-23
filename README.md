@@ -4,7 +4,7 @@
 
 ## Overview
 
-`viirs_snpp_daily_gridding` is a production-ready Python package for processing and gridding daily VIIRS SNPP (Deep Blue and Dark Target AOD) level 2 satellite data. It automates the workflow from raw data ingestion to spatially gridded NetCDF outputs (Level 3), supporting atmospheric and environmental research. The package is designed for both programmatic (library) and command-line (CLI) use, with robust logging, multiprocessing, and clear error handling.
+`viirs_snpp_daily_gridding` is a Python package for processing and gridding daily VIIRS SNPP (Deep Blue and Dark Target AOD) level 2 satellite data. It automates the workflow from raw data ingestion to spatially gridded NetCDF outputs (Level 3), supporting atmospheric and environmental research. The package is designed for both programmatic (library) and command-line (CLI) use, with robust logging, multiprocessing, and clear error handling.
 
 ## Features
 
@@ -53,10 +53,10 @@ result = run_gridding(
     start_date="20240101",
     end_date="20240105",
     data_export_path="./output",
-    min_lon=-180,
-    max_lon=180,
-    min_lat=-90,
-    max_lat=90,
+    min_lon=-179.95,
+    max_lon=179.95,
+    min_lat=-89.95,
+    max_lat=89.95,
     num_cores=4,
     earthdata_username="your_username",
     earthdata_password="your_password"
@@ -78,14 +78,14 @@ Example (with all parameters):
 
 ```bash
 python -m viirs_snpp_daily_gridding.run_gridding \
-    --grid_size 0.2 \
+    --grid_size 0.1 \
     --start_date 20240110 \
     --end_date 20240112 \
     --data_export_path ./output \
-    --min_lon -100 \
-    --max_lon 100 \
-    --min_lat -50 \
-    --max_lat 50 \
+    --min_lon -179.95 \
+    --max_lon 179.95 \
+    --min_lat -89.95 \
+    --max_lat 89.95 \
     --num_cores 2 \
     --earthdata_username your_username \
     --earthdata_password your_password
@@ -97,7 +97,7 @@ python -m viirs_snpp_daily_gridding.run_gridding \
 
 ## Important Note on Data Access (NASA S3 Restrictions)
 
-NASA's SNPP VIIRS daily data from the Earthdata/LAADS DAAC S3 bucket is only accessible from AWS services (such as EC2) that are located in the AWS us-west-2 region. If you are not running this package on an AWS instance in us-west-2, you will not be able to access the S3 bucket directly.
+NASA's SNPP VIIRS daily Level 2 data from the Earthdata/LAADS DAAC S3 bucket is only accessible from AWS services (such as EC2) that are located in the AWS us-west-2 region. If you are not running this package on an AWS instance in us-west-2, you will not be able to access the S3 bucket directly.
 
 **If you want to process data manually on your local machine:**
 
@@ -121,28 +121,3 @@ NASA's SNPP VIIRS daily data from the Earthdata/LAADS DAAC S3 bucket is only acc
 3. **Proceed with the rest of the workflow as normal.**
 
 If you are running on AWS EC2 in us-west-2, no changes are needed and S3 access will work as designed.
-
-## Credentials
-
-Earthdata credentials are required for data access. Pass them as arguments to the relevant functions.
-
-## Logging
-
-All logs are output to the console and are multiprocessing-aware. No log files are written by default.
-
-## Project Structure
-
-```
-viirs_snpp_daily_gridding/
-    __init__.py
-    run_gridding.py
-    export_data/
-    logs/
-    process_data/
-    s3_authentication/
-    web_scraping/
-```
-
-## Contributing
-
-Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
